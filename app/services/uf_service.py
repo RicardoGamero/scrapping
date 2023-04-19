@@ -7,5 +7,5 @@ class UfService:
     def __init__(self, uf_repository: Optional[UfRepository] = None):
         self.uf_repository = uf_repository or UfRepository()
 
-    def get_ufs(self, year: str, month: str) -> list[UF]:
-        return self.uf_repository.get_ufs(year, month)
+    def get_ufs(self, date: str) -> list[UF]:
+        return self.uf_repository.get_ufs(date)

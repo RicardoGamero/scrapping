@@ -5,6 +5,6 @@ class UF:
 
     def to_dict(self):
         return {
-            'date': self.date.strftime('%Y-%m-%d'),
+            'date': self.date,
             'value': self.value
         }

@@ -6,17 +6,17 @@ app = Flask(__name__)
 
 @app.route('/ufs', methods=['GET'])
 def get_ufs():
-    year = request.args.get('year')
-    month = request.args.get('month')
+    date = request.args.get('date')
 
-    if not year or not month:
+    if date is None:
         return jsonify(
-            {'error': 'Year and month parameters are required'}
+            {'error': 'Date parameters are required'}
             ), 400
-
-    uf_service = UfService()
-    ufs = uf_service.get_ufs(year, month)
-
+    try:
+        uf_service = UfService()
+        ufs = uf_service.get_ufs(date)
+    except Exception as e:
+        return jsonify({'errors': str(e)}), 400
     return jsonify({'ufs': ufs}), 200
 
 
